@@ -28,69 +28,30 @@ using System.Collections.Generic;
 [Serializable]
 public class PlayerData
 {
-    
-    public bool isFusionUnlocked;
-    public bool[] isUnlocked = new bool[5];
-    public bool[] isAutoUnlocked = new bool[5];
-    public BigDouble challengePoints;
-    public BigDouble atomicMass;
-    public BigDouble[] elementTotals = new BigDouble[6];
-    public BigDouble[] challengeCompletions = new BigDouble[8];
-    #region Generator Storage
-    public BigDouble[] hydrogenLevels = new BigDouble[8];
-    public BigDouble[] hydrogenAmounts = new BigDouble[8];
-
-    public BigDouble[] heliumLevels = new BigDouble[8];
-    public BigDouble[] heliumAmounts = new BigDouble[8];
-
-    public BigDouble[] lithiumLevels = new BigDouble[8];
-    public BigDouble[] lithiumAmounts = new BigDouble[8];
-
-    public BigDouble[] berylliumLevels = new BigDouble[8];
-    public BigDouble[] berylliumAmounts = new BigDouble[8];
-
-    public BigDouble[] boronLevels = new BigDouble[8];
-    public BigDouble[] boronAmounts = new BigDouble[8];
-
-    public BigDouble[] carbonLevels = new BigDouble[8];
-    public BigDouble[] carbonAmounts = new BigDouble[8];
+    #region Tier Stuff
+    public BigDouble[] elementTotals = new BigDouble[26];
+    public BigDouble[] generatorLevel = new BigDouble[6];
+    public BigDouble[] generatorAmount = new BigDouble[6];
+    #endregion
+    #region Achievements
+    public bool[] isAchievementUnlocked = new bool[8];
     #endregion
 
     public PlayerData()
     {
-        challengePoints = 0;
-        atomicMass = 0;
-        isFusionUnlocked = false;
-        for (int i = 0; i < 5; i++)
-        {
-            isUnlocked[i] = false;
-            isAutoUnlocked[i] = false;
-        }
-            
-        for (int i = 0; i < elementTotals.Length - 1; i++)
-            elementTotals[i + 1] = 0;
         elementTotals[0] = 10;
-        #region Generators
-        for (int i = 0; i < 8; i++)
+        for(int i = 0; i < elementTotals.Length - 1; i++)
         {
-            hydrogenLevels[i] = 0;
-            hydrogenAmounts[i] = 0;
-
-            heliumLevels[i] = 0;
-            heliumAmounts[i] = 0;
-
-            lithiumLevels[i] = 0;
-            lithiumAmounts[i] = 0;
-
-            berylliumLevels[i] = 0;
-            berylliumAmounts[i] = 0;
-
-            boronLevels[i] = 0;
-            boronAmounts[i] = 0;
-
-            carbonLevels[i] = 0;
-            carbonAmounts[i] = 0;
+            elementTotals[i + 1] = 0;
         }
-        #endregion
+        for(int i = 0; i < 6; i++)
+        {
+            generatorLevel[i] = 0;
+            generatorAmount[i] = 0;
+        }
+        for(int i = 0; i < 8; i++)
+        {
+            isAchievementUnlocked[i] = false;
+        }
     }
 }
